@@ -1,0 +1,33 @@
+{%extends 'tkmir_website/layout.html'%}
+{%load crispy_forms_tags%}
+{%block posts_creation %}
+<div class="row">
+    <div class="col-sm-4">
+    </div>
+    <div class="col-md-6 d-flex align-items-stretch"
+         data-aos="zoom-in"
+         data-aos-delay="100">
+        <div class="icon-box">
+          <div class="icon text-center">
+            <i class="bx bxl-dribbble"></i>
+            <h4>
+              <a href="">Create a post!</a>
+            </h4>
+          </div>
+           <!--form for login or register-->
+           <form method="POST">
+               {% csrf_token %}
+               <fieldset class="form-group">
+                {{ form|crispy}}
+              </fieldset>
+              <br>
+              <div class="text-center">
+                <button type="submit" class="btn btn-primary">Post</button>
+              </div>
+              
+           </form>
+        </div>
+    </div>
+</div>
+
+{%endblock%}

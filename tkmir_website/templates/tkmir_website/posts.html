@@ -1,0 +1,60 @@
+{%extends 'tkmir_website/layout.html'%}
+{%load customtags%}
+{%block posts%}
+{% if messages %}
+{% for message in messages %}
+<div class="alert alert-{{message.tags}}" role="alert">
+    {{message}}
+</div>
+{% endfor %}
+{% endif %}
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12 col-md-3">
+            <br>
+            <br>
+            <div class="card">
+                <div class="card-header">
+                    Featured
+                  </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Science</li>
+                    <li class="list-group-item">Tech</li>
+                    <li class="list-group-item">A.I</li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-sm-12 col-md-6">
+            {% if posts%}
+            {%for post in posts%}
+            <br>
+            <br>
+
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-title">{{post.title}}</h3>
+                    <h5 class="card-subtitle mb-2 text-muted">{{post.author}}</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">{{post.date_posted|days_until}}</h6>
+                    <p class="card-text">{{post.content}}</p>
+                </div>
+            </div>
+            {%endfor%}
+            {%endif%}
+        </div>
+        <div class="col-sm-12 col-md-3">
+            <br>
+            <br>
+            <div class="card">
+                <div class="card-header">
+                    Featured
+                  </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Politics</li>
+                    <li class="list-group-item">Women and Health</li>
+                    <li class="list-group-item">Food Technology</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+    {%endblock%}

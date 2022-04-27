@@ -1,0 +1,61 @@
+{% extends 'tkmir_website/layout.html' %}
+{% load crispy_forms_tags %}
+{% load socialaccount %}
+{% block log_reg%}
+<div class="message">
+    {% if messages %}
+          {% for message in messages %}
+          <div class="alert alert-{{message.tags}}" role="alert">
+            {{message}}
+          </div>
+          {% endfor %}
+          {% endif %}
+</div>
+           
+
+<section id="services" class="services section-bg">
+    <div class="container" data-aos="fade-up">
+        <div class="section-title">
+            <h2>Login/Register</h2>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6d-flex align-items-stretch"
+                 data-aos="zoom-in"
+                 data-aos-delay="100">
+                <div class="icon-box ">
+                    <div class="icon text-center">
+                        <i class="bx bxl-dribbble"></i>
+                        <h4>
+                          <a href="">Register</a>
+                        </h4>
+                    </div>
+                   <!--form for login or register-->
+                   <form method="POST">
+                       {% csrf_token %}
+                       <fieldset class="form-group">
+                        {{ form|crispy}}
+                      </fieldset>
+                    {% comment %} <div class="form-group">
+                      <label for="exampleInputEmail1">Email address</label>
+                      <input name = "login_email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    </div> {% endcomment %}
+
+                    <div class="text-center">
+                      <button type="submit" class="btn btn-primary">Register</button>
+                    </div>
+                    
+                  <br>
+                  </form>
+                  
+                  <!-- Minified CSS and JS -->
+                  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+                  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+                  </script>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock log_reg%}
