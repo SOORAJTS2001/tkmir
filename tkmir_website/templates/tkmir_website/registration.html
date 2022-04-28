@@ -1,61 +1,129 @@
-{% extends 'tkmir_website/layout.html' %}
-{% load crispy_forms_tags %}
-{% load socialaccount %}
-{% block log_reg%}
+{% extends 'tkmir_website/layout.html' %} {% load crispy_forms_tags %} {% load
+socialaccount %} {% block log_reg%}}{%load static%}
 <div class="message">
-    {% if messages %}
-          {% for message in messages %}
-          <div class="alert alert-{{message.tags}}" role="alert">
-            {{message}}
-          </div>
-          {% endfor %}
-          {% endif %}
+  {% if messages %} {% for message in messages %}
+  <div class="alert alert-{{message.tags}}" role="alert">{{message}}</div>
+  {% endfor %} {% endif %}
 </div>
-           
 
-<section id="services" class="services section-bg">
-    <div class="container" data-aos="fade-up">
-        <div class="section-title">
-            <h2>Login/Register</h2>
-        </div>
-
-        <div class="row">
-            <div class="col-md-6d-flex align-items-stretch"
-                 data-aos="zoom-in"
-                 data-aos-delay="100">
-                <div class="icon-box ">
-                    <div class="icon text-center">
-                        <i class="bx bxl-dribbble"></i>
-                        <h4>
-                          <a href="">Register</a>
-                        </h4>
-                    </div>
-                   <!--form for login or register-->
-                   <form method="POST">
-                       {% csrf_token %}
-                       <fieldset class="form-group">
-                        {{ form|crispy}}
-                      </fieldset>
-                    {% comment %} <div class="form-group">
-                      <label for="exampleInputEmail1">Email address</label>
-                      <input name = "login_email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                    </div> {% endcomment %}
-
-                    <div class="text-center">
-                      <button type="submit" class="btn btn-primary">Register</button>
-                    </div>
-                    
-                  <br>
-                  </form>
-                  
-                  <!-- Minified CSS and JS -->
-                  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-                  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
-                  </script>
-
-                </div>
+<section class="h-100 bg-dark">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col">
+        <div class="card card-registration my-4">
+          <div class="row g-0">
+            <div class="col-xl-6 d-none d-xl-block">
+              <img class="rounded mx-auto d-block" src="https://tkmim.ac.in/wp-content/uploads/2016/04/tkm-college-of-engineering.jpg"
+                alt="Sample photo" class="img-fluid"
+                style="border-top-left-radius: .25rem; border-bottom-left-radius: .25rem;" />
             </div>
+            <div class="col-xl-6">
+              <div class="card-body p-md-5 text-black">
+                <h3 class="mb-5 text-uppercase text-center"> registration form</h3>
+
+                <form method="POST">
+                  {% csrf_token %}
+                <div class="row">
+                  <div class="col-md-6 mb-4">
+                    <div class="form-floating mb-3">
+                      {{ form.first_name }}
+                      <label class="form-label control-label text-muted" for="id_first_name">{{ form.first_name.label }}<sup>*</sup></label>
+                    </div>
+                  </div>
+                  <div class="col-md-6 mb-4">
+                    <div class="form-floating mb-3">
+                      {{ form.last_name }}
+                      <label class="form-label control-label text-muted" for="id_first_name">{{ form.last_name.label }}<sup>*</sup></label>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-6 mb-4">
+                    <div class="form-floating mb-3">
+                      {{ form.mobile }}
+                      <label class="form-label control-label text-muted" for="id_mobile">{{ form.mobile.label }}<sup>*</sup></label>
+                    </div>
+                  </div>
+                  <div class="col-md-6 mb-4">
+                    <div class="form-floating mb-3">
+                      {{ form.email }}
+                      <label class="form-label control-label text-muted" for="id_email">{{ form.email.label }}<sup>*</sup></label>
+                    </div>
+                  </div>
+                </div>
+
+                
+                <div class="row">
+                  <div class="col-md-6 mb-4">
+                    <div class="form-floating mb-3">
+                      {{ form.username }}
+                      <label class="form-label control-label text-muted" for="id_username">{{ form.username.label }}<sup>*</sup></label>
+                    </div>
+                  </div>
+                  <div class="col-md-6 mb-4">
+                    <div class="form-floating mb-3">
+                      {{ form.role }}
+                      <label class="form-label control-label text-muted" for="id_role">{{ form.role.label }}<sup>*</sup></label>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-6 mb-4">
+                    <div class="form-floating mb-3">
+                      {{ form.password1 }}
+                      <label class="form-label control-label text-muted" for="id_username">{{ form.password1.label }}<sup>*</sup></label>
+                    </div>
+                  </div>
+                  <div class="col-md-6 mb-4">
+                    <div class="form-floating mb-3">
+                      {{ form.password2 }}
+                      <label class="form-label control-label text-muted" for="id_role">{{ form.password2.label }}<sup>*</sup></label>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-6 mb-4">
+                    <div class="form-floating mb-3">
+                      {{ form.institution }}
+                      <label class="form-label control-label text-muted" for="id_institution">{{ form.institution.label }}<sup>*</sup></label>
+                    </div>
+                  </div>
+                  <div class="col-md-6 mb-4">
+                    <div class="form-floating mb-3">
+                      {{ form.department }}
+                      <label class="form-label control-label text-muted" for="id_department">{{ form.department.label }}<sup>*</sup></label>
+                    </div>
+                  </div>
+                </div>
+
+
+                <div class="d-flex justify-content-end pt-3">
+                  <button type="button" class="btn btn-outline-secondary btn-md">Reset all</button>
+                  <button type="submit" class="btn btn-primary btn-md ms-2">Submit</button>
+                </div>
+                <br>
+                
+                {% if form.errors %}
+                {% for field in form %}
+                {% for error in field.errors %} 
+                  <div class="alert alert-danger" role="alert">
+                   <strong style="font-family: Arial, Helvetica, sans-serif">{{ error|escape }}</strong>
+                  </div>
+                {% endfor %}
+                {% endfor %}
+                {% endif %}
+                
+                
+              </form>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
 </section>
 {% endblock log_reg%}
