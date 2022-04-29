@@ -207,6 +207,13 @@
 <script src="{% static 'assets/vendor/waypoints/noframework.waypoints.js' %}"></script>
 <script src="{% static 'assets/vendor/php-email-form/validate.js' %}"></script>
 <script src="{% static 'assets/js/main.js' %}"></script>
+
+<script>
+  document.getElementById('id_role').onchange = function () 
+  {
+    document.getElementById("id_roll_no").disabled = !(this.value === "student");
+  }
+</script>
 <!-- Template Main JS File -->
 </body>
 </html>

@@ -9,8 +9,8 @@ from django.contrib.auth.validators import UnicodeUsernameValidator
 username_validator = UnicodeUsernameValidator()
 
 ROLE_CHOICES = [
-    ('student', 'Student'),
     ('mentor', 'Mentor'),
+    ('student', 'Student'),
     # ('mango', 'Mangoes'),
     # ('honeydew', 'Honeydews'),
 ]
@@ -65,7 +65,7 @@ class UserRegisterForm(UserCreationForm):
         choices=ROLE_CHOICES, attrs={'class': "form-select"}))
 
     roll_no = forms.CharField(required=False,max_length=20, widget=forms.TextInput(
-        attrs={'class': "form-control form-control-lg",'placeholder': 'Search'}))
+        attrs={'class': "form-control form-control-lg",'placeholder': 'Search','disabled':'disabled'}))
 
     mobile = forms.CharField(required=False, label=_('Mobile number'), max_length=20, 
        widget=forms.TextInput(attrs={'class': "form-control form-control-lg",'placeholder': 'Search'}))
