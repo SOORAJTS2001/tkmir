@@ -1,3 +1,4 @@
+from asyncio.windows_events import NULL
 from django.shortcuts import render
 from django.contrib import messages
 from django.shortcuts import render, redirect
@@ -29,9 +30,10 @@ def register(request):
             user.profile.name = user.profile.name +' '+ form.cleaned_data.get('last_name')
             user.profile.roll_no = form.cleaned_data.get('roll_no')
             user.profile.mobile = form.cleaned_data.get('mobile')
-            print(user.profile.mobile)
-            user.profile.college = form.cleaned_data.get('college')
+            user.profile.email = form.cleaned_data.get('email')
+            user.profile.institution = form.cleaned_data.get('institution')
             user.profile.department = form.cleaned_data.get('department')
+            user.profile.role = form.cleaned_data.get('role')
             user.save()
             ######################### mail system ####################################
             # htmly = get_template('tkmir_website/email.html')
@@ -44,6 +46,8 @@ def register(request):
             # ##################################################################
             messages.success(request, f'Your account has been created ! You are now able to log in')
             return redirect('log-reg')
+        else:
+            messages.warning(request, f'Invalid Credentials')
     else:
         form = UserRegisterForm()
     return render(request, 'tkmir_website/registration.html', {'form': form, 'title':'reqister here'})
@@ -94,8 +98,10 @@ def posts_creation(request):
     else:
         form = PostsCreationForm()
     return render(request, 'tkmir_website/posts_creation.html',{'form': form})
+
+
 @login_required(login_url='log-reg')
-def logout_view(request):#to logout
+def logout_view(request):
     logout(request)
     messages.warning(request, f'You have succefully logged out!')
     return redirect('home')

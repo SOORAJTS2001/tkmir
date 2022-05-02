@@ -12,6 +12,7 @@ class Profile(models.Model):
     department = models.CharField(max_length=30, blank=True)
     def __str__(self):
         return self.name
+
 class PostsCreation(models.Model):
     title = models.CharField(max_length=100)
     content = models.TextField()
@@ -19,6 +20,7 @@ class PostsCreation(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     def __str__(self):
         return self.title
+
 @receiver(post_save, sender=User)
 def update_user_profile(sender, instance, created, **kwargs):
     if created:
